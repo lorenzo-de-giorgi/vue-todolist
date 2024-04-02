@@ -31,6 +31,14 @@
                     <i class="fa-regular fa-trash-can" @click="removeItem(item.id)"></i>
                 </li>
             </ul>
+            <div>
+                <h2>Aggiungi</h2>
+                <div class="mb-3">
+                    <label for="todotext" class="form-label">Inserisci cosa acquistare</label>
+                    <input type="text" class="form-control" id="todo-text" v-model="itemText" accordion @keyup.enter="addTodo">
+                    <button class="btn btn-primary mt-3" @click="addTodo">Add</button>
+                </div>
+            </div>
         </main>
 </div>
 </body>
