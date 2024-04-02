@@ -12,10 +12,26 @@
     <!-- vue -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <!-- js -->
-    <script src="js/script.js" type="text/javascript" defer></script>
+    <script src="js/script.js" type="module"></script>
     <title>ToDo List</title>
 </head>
 <body>
+    <div id="app">
+        <header class="bg-light p-4 d-flex justify-content-between">
+            <!-- logo -->
+            <img src="img/todo-logo.png" alt="logo">
+            <span>ToDo List</span>
+        </header>
 
+        <main class="container my-4 bg-light">
+            <h1>Lista della spesa</h1>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex justify-content-between" v-for="(item, index) in todo" :key="item.id">
+                    <span :class="{'text-decoration-line-through': item.done}" @click="toggleDone(item.id)" class="pointer"> {{item.text}}</span>
+                    <i class="fa-regular fa-trash-can" @click="removeItem(item.id)"></i>
+                </li>
+            </ul>
+        </main>
+</div>
 </body>
 </html>
