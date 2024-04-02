@@ -21,6 +21,11 @@
             <!-- logo -->
             <img src="img/todo-logo.png" alt="logo">
             <span>ToDo List</span>
+            <select name="done" id="done" v-model="done">
+                <option value="">Tutto</option>
+                <option value="true">Fatto</option>
+                <option value="false">Da fare</option>
+            </select>
         </header>
 
         <main class="container my-4 bg-light">
