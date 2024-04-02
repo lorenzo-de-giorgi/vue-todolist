@@ -17,28 +17,31 @@
 </head>
 <body>
     <div id="app">
-        <header class="bg-light p-4 d-flex justify-content-between">
+        <header class="p-4 d-flex justify-content-between">
             <!-- logo -->
             <img src="img/todo-logo.png" alt="logo">
-            <span>ToDo List</span>
-            <select name="done" id="done" v-model="done">
-                <option value="">Tutto</option>
-                <option value="true">Fatto</option>
-                <option value="false">Da fare</option>
-            </select>
+            <div class="pt-2">
+                <select class="form-select" aria-label="" name="done" id="done" v-model="done">
+                    <option selected value="">Tutto</option>
+                    <option value="true">Fatto</option>
+                    <option value="false">Da fare</option>
+                </select>
+            </div>
         </header>
 
-        <main class="container my-4 bg-light">
-            <h1>Lista della spesa</h1>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item d-flex justify-content-between" v-for="(item, index) in todo" :key="item.id">
-                    <span :class="{'text-decoration-line-through': item.done}" @click="toggleDone(item.id)" class="pointer"> {{item.text}}</span>
-                    <i class="fa-regular fa-trash-can" @click="removeItem(item.id)"></i>
-                </li>
-            </ul>
+        <main class="container my-4">
+            <h1 class="text-center">Lista della spesa</h1>
+            <div class="radius-list">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between" v-for="(item, index) in filteredTodo" :key="item.id">
+                        <span :class="{'text-decoration-line-through': item.done}" @click="toggleDone(item.id)" class="pointer"> {{item.text}}</span>
+                        <i class="fa-regular fa-trash-can mt-1" @click="removeItem(item.id)"></i>
+                    </li>
+                </ul>
+            </div>
             <div>
-                <h2>Aggiungi</h2>
-                <div class="mb-3">
+                <h2 class="text-center">Aggiungi</h2>
+                <div class="mb-3 text-center">
                     <label for="todotext" class="form-label">Inserisci cosa acquistare</label>
                     <input type="text" class="form-control" id="todo-text" v-model="itemText" accordion @keyup.enter="addTodo">
                     <button class="btn btn-primary mt-3" @click="addTodo">Add</button>
